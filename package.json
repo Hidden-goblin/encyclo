@@ -4,11 +4,16 @@
   "description": "lqdm encyclopedia for world knowledge",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "E Aivayan",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.3.4",
     "express": "^4.13.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.5.0"
   }
 }
