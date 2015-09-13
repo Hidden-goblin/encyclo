@@ -1,0 +1,19 @@
+<%- include('head.html'); %>
+<form method="post" action="/create">
+	<% if (typeof error !== 'undefined') { %> 
+		<p> ERROR </p>
+	<% } %>
+	<% if (typeof succes !== 'undefined') { %> 
+		<p> Youpi!! C'est entré. </p>
+	<% } %>
+	<fieldset>
+	<legend>Creation d'article</legend>
+	<label for="title">Title</label>
+	<input id="title" type="text" name="title"/>
+	<br />
+	<label for="content">Article content</label>
+	<textarea id="content" name="content"></textarea>
+	</fieldset>
+	<button type="submit">Envoyer</button>
+</form>
+<%- include('footer.html'); %>

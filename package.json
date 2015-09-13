@@ -10,10 +10,15 @@
   "author": "E Aivayan",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.13.3",
+    "chalk": "^1.1.1",
     "ejs": "^2.3.4",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "nano": "^6.1.5",
+    "slug": "^0.9.1"
   },
   "devDependencies": {
+    "gulp": "^3.9.0",
     "nodemon": "^1.5.0"
   }
 }
