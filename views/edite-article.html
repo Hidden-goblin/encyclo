@@ -1,7 +1,7 @@
 <%- include('head.html'); %>
 <h2>Article</h2>
 <h1>Édition de <%= title %></h1>
-<p><%= content %></p>
+<p><%- content %></p>
 
 <form method="post" action="/edit/<%= _id%>">
 	<fieldset>
