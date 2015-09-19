@@ -1,8 +1,11 @@
 "use strict";
 
 // COMMON JS IMPORTS
+var rc = require('rc');
+var conf = rc('encyclo');
+var hote = 'http://'+ conf.baselogin+':'+conf.basepasswd+'@localhost:5984';
 
-var nano  = require('nano')('http://localhost:5984');
+var nano  = require('nano')(hote);
 var slug  = require('slug'); // slug transform to url frienldy text
 var chalk = require('chalk'); // chalk is to color terminal output
 var markdown = require('markdown').markdown;// markdown text formatting

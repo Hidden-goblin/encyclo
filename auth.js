@@ -6,8 +6,6 @@ var LocalStrategy = require('passport-local').Strategy;
 var rc = require('rc');
 var conf = rc('encyclo');
 
-console.log(conf);
-
 passport.serializeUser(function(user, done) {
   done(null, user);
 });

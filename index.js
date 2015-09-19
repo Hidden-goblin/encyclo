@@ -3,7 +3,7 @@
 var express = require( 'express' );
 var controler = require( './controler');
 var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
+// var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var auth = require('./auth');
 
@@ -21,7 +21,7 @@ controler.initDB();
 // Création d'une instance d'express
 var app = express();
 // Ajout middleware 
-app.use(cookieParser('keyboard cat'));
+// app.use(cookieParser('keyboard cat'));
 
 app.use(session({ secret: 'keyboard cat' }));
 
@@ -50,8 +50,8 @@ app.get('/hello/:name', function (request, response) {
 
 app.get('/article/:name', controler.article);
 
-app.get('/edit/:_id', controler.editeArticle.get);
-app.post('/edit/:_id', controler.editeArticle.post);
+app.get('/edit/:_id', auth.guard, controler.editeArticle.get);
+app.post('/edit/:_id', auth.guard, controler.editeArticle.post);
 
 app.get('/create', auth.guard, controler.create.get);
 app.post('/create', auth.guard, controler.create.post);
