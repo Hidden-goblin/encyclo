@@ -11,6 +11,11 @@ module.exports = {
         };
         return[doc,toJSON(doc)];
       }
+    },
+    update: function (doc, req) {
+      var body = JSON.parse(req.body);
+        doc.content = body.content;
+        return[doc, toJSON(doc)];
     }
   },
   views: {

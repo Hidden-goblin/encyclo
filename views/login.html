@@ -1,0 +1,19 @@
+<%- include('head.html'); %>
+<form method="post" action="/login">
+	<% if (typeof error !== 'undefined') { %> 
+		<p> Pas connecté </p>
+	<% } %>
+	<% if (typeof succes !== 'undefined') { %> 
+		<p> Connecté </p>
+	<% } %>
+	<fieldset>
+	<legend>Connexion</legend>
+	<label for="username">Login</label>
+	<input id="username" type="text" name="username"/>
+	<br />
+	<label for="password">Password</label>
+	<input id="password" type="password" name="password"/>
+	</fieldset>
+	<button type="submit">Envoyer</button>
+</form>
+<%- include('footer.html'); %>

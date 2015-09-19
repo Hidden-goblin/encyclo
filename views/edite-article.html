@@ -1,0 +1,13 @@
+<%- include('head.html'); %>
+<h2>Article</h2>
+<h1>Édition de <%= title %></h1>
+<p><%= content %></p>
+
+<form method="post" action="/edit/<%= _id%>">
+	<fieldset>
+	<label for="content">Article content</label>
+	<textarea id="content" name="content"> <%= content%></textarea>
+	</fieldset>
+	<button type="submit">Envoyer</button>
+</form>
+<%- include('footer.html'); %>

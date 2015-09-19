@@ -5,6 +5,7 @@
 var nano  = require('nano')('http://localhost:5984');
 var slug  = require('slug'); // slug transform to url frienldy text
 var chalk = require('chalk'); // chalk is to color terminal output
+var markdown = require('markdown').markdown;// markdown text formatting
 
 var blue    = chalk.blue;
 var green   = chalk.green;
@@ -27,7 +28,7 @@ function initDesignDocuments() {
     // to be updated, couch docs needs the last revision in parameter
     // -> Add current rev if doc exist
     if (headers && headers.etag) designDocument._rev = headers.etag.replace(/"/g,'');
-    console.log(headers.etag);
+    // console.log(headers.etag);
     console.log(designDocument);
 
     // update or create
@@ -57,26 +58,39 @@ function list(request, response){
   db.view('encyclo', 'all', function(err, body) {
       if(err)return response.status(500).send('Error in the request');
       console.log(body);
+     // console.log(markdown);
+      // body.rows.forEach(function(row){
+        // row.value = markdown.toHTML(row.value);
+      // });
+      // console.log(body);
       return response.render('list.html', body);
   });
 };
 
 // POST create
-function createArticle(request, response) {
-  var ca = blue('[CREATE]');
-  console.log(ca, request.body);
-  var body =  request.body;
-  body.id = slug(body.title.trim(),slug.defaults.modes['rfc3986']);
-  console.log(ca, body);
-  db.atomic("encyclo", "create", body.id, body, function (error, couchResp) {
-    if (error) { 
-      console.log(error);
-      return response.render('createArticle.html',{error: true,});
-    }
-    console.log(ca, grey('couch response'), body);
-    console.log(couchResp);
-    return response.render('createArticle.html', {succes: true,});  
-  }); 
+
+
+var create = {
+  get: function getArticleForm(request, response) {
+    // if ()
+  return response.render('createArticle.html');
+  },
+  post: function createArticle(request, response) {
+    var ca = blue('[CREATE]');
+    console.log(ca, request.body);
+    var body =  request.body;
+    body.id = slug(body.title.trim(),slug.defaults.modes['rfc3986']);
+    console.log(ca, body);
+    db.atomic("encyclo", "create", body.id, body, function (error, couchResp) {
+      if (error) { 
+        console.log(error);
+        return response.render('createArticle.html',{error: true,});
+      }
+      console.log(ca, grey('couch response'), body);
+      console.log(couchResp);
+      return response.render('createArticle.html', {succes: true,});  
+    }); 
+  }
 }
 
 // GET article
@@ -87,9 +101,47 @@ function article(request, response) {
   db.get( id, function (err, body) {
     if (err) return response.status(404).send(404);
     console.log(prefix, grey('couch response'), body);
+    body.content = markdown.toHTML(body.content);
     return response.render('article.html', body);
   });
 }
+
+
+var login = {
+  get: function getLogin(request, response) {
+      return response.render('login.html');
+  },
+  post: function postLogin(request, response) {
+    var prefix  = blue('[LOGIN]');
+    var body    =  request.body;
+    console.log(prefix, body);
+    
+    return response.render('login.html');
+  },
+};
+
+var editeArticle = {
+  get: function getEditeArticle(request, response) {
+    console.log(request.params);
+    var id = request.params._id;
+    db.get( id, function (err, body) {
+      if ( err ) return response.render('erreur.html',{error:'Article non trouvé dans la base ou erreur de requête à la base.'});
+        return response.render('edite-article.html', body);
+    })
+  },
+  post: function postEditeArticle(request, response) {
+    var ca = blue('[UPDATE]');
+    console.log(request.params);
+    db.atomic("encyclo", "update", request.params._id, request.body, function (error, couchResp) {
+      if (error) { 
+        console.log(error);
+        return response.render('createArticle.html',{error: true,});
+      }
+      console.log(ca, grey('couch response'), request.body);
+      console.log(couchResp);
+      return response.render('createArticle.html', {succes: true,});  
+      })}
+};
 
 ////// 
 // COMMON JS EXPORTS
@@ -98,6 +150,8 @@ function article(request, response) {
 module.exports = {
   list: list,
   article: article,
-  createArticle: createArticle,
   initDB: initDesignDocuments,
+  login: login,
+  create: create,
+  editeArticle: editeArticle
 };
