@@ -83,6 +83,10 @@ var create = {
     console.log(ca, request.body);
     var body =  request.body;
     body.id = slug(body.title.trim(),slug.defaults.modes['rfc3986']);
+    var today = new Date();
+    body.lastChange = today.toString();
+    body.author = request.user.id;
+    body.lastAuthor = request.user.id;
     console.log(ca, body);
     db.atomic("encyclo", "create", body.id, body, function (error, couchResp) {
       if (error) { 
@@ -91,7 +95,16 @@ var create = {
       }
       console.log(ca, grey('couch response'), body);
       console.log(couchResp);
-      return response.render('createArticle.html', {succes: true,});  
+      // return response.redirect(302,'/article/'+body.id);
+      return response.render('article.html',{succes: true,
+                                            title: body.title,
+                                            author: body.author,
+                                            category: body.category,
+                                            localization: body.localization,
+                                            lastChange: body.lastChange,
+                                            content: markdown.toHTML(body.content),
+                                            _id: body.id,
+                                        })
     }); 
   }
 }
@@ -99,6 +112,7 @@ var create = {
 // GET article
 function article(request, response) {
   var prefix = blue('[ARTICLE]');
+  console.log(prefix, request.params);
   var id = request.params.name;
   console.log(prefix, grey('get with id'), id);
   db.get( id, function (err, body) {
@@ -129,12 +143,14 @@ var editeArticle = {
     var id = request.params._id;
     db.get( id, function (err, body) {
       if ( err ) return response.render('erreur.html',{error:'Article non trouvé dans la base ou erreur de requête à la base.'});
+        body.content = body.content.trim();
         return response.render('edite-article.html', body);
     })
   },
   post: function postEditeArticle(request, response) {
     var ca = blue('[UPDATE]');
     console.log(request.params);
+
     db.atomic("encyclo", "update", request.params._id, request.body, function (error, couchResp) {
       if (error) { 
         console.log(error);
@@ -142,7 +158,28 @@ var editeArticle = {
       }
       console.log(ca, grey('couch response'), request.body);
       console.log(couchResp);
-      return response.render('createArticle.html', {succes: true,});  
+      // return response.render('article.html',{succes: true,
+      //                                       title: body.title,
+      //                                       author: body.author,
+      //                                       category: body.category,
+      //                                       localization: body.localization,
+      //                                       lastChange: body.lastChange,
+      //                                       content: markdown.toHTML(body.content),
+      //                                       _id: body.id,
+      //                                   }) 
+      db.get( request.params._id, function (err, body) {
+        console.log(blue( '[POST UPTDATE GET] for new display'));
+        console.log(yellow(body.name));
+        if ( err ) return response.render('erreur.hml', {error: 'L\'article demandé ne peut pas être affiché'});
+          return response.render('article.html',{succes: true,
+                                            title: body.title,
+                                            author: body.author,
+                                            category: body.category,
+                                            localization: body.localization,
+                                            lastChange: body.lastChange,
+                                            content: markdown.toHTML(body.content),
+                                            _id: request.params._id, });
+      }); 
       })}
 };
 

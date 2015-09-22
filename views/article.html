@@ -1,6 +1,9 @@
 <%- include('head.html'); %>
-<h2>Article</h2>
+<% if ( typeof succes !== 'undefined') { %>
+<strong> L'article suivant a bien été enregistré.</strong>
+<%}%>
 <h1><%= title %></h1>
+Auteur : <%- author%>, Modifié le : <%- lastChange %>
 <p><%- content %></p>
 <a href="/edit/<%= _id %>">Edite </a>
 <%- include('footer.html'); %>

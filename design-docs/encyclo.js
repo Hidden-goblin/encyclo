@@ -8,6 +8,12 @@ module.exports = {
           _id: body.id,
           title: body.title,
           content: body.content,
+          abstract: body.abstract,
+          lastChange: body.lastChange,
+          lastAuthor: body.lastAuthor,
+          author: body.author,
+          localization: body.localization,
+          category: body.category,
         };
         return[doc,toJSON(doc)];
       }
@@ -21,7 +27,10 @@ module.exports = {
   views: {
     all: {
       map: function(doc) {
-        emit(doc.title, doc.content);
+        emit(doc.title, {content:doc.content, 
+                         abstract:doc.abstract,
+                         localization: doc.localization,
+                         category: doc.category, });
       },
     },
   },

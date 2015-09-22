@@ -71,4 +71,6 @@ app.get('/', function index( request, response){
 
 var server = app.listen(3000, function endInit(){
   console.log("Server is listening on port ", server.address().port);
+  var today = new Date();
+  console.log( today.toString() );
 });
