@@ -150,7 +150,10 @@ var editeArticle = {
   post: function postEditeArticle(request, response) {
     var ca = blue('[UPDATE]');
     console.log(request.params);
-
+    var body = request.body;
+    var today = new Date();
+    body.lastChange = today.toString();
+    body.lastAuthor = request.user.id;
     db.atomic("encyclo", "update", request.params._id, request.body, function (error, couchResp) {
       if (error) { 
         console.log(error);

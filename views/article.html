@@ -3,7 +3,10 @@
 <strong> L'article suivant a bien été enregistré.</strong>
 <%}%>
 <h1><%= title %></h1>
-Auteur : <%- author%>, Modifié le : <%- lastChange %>
-<p><%- content %></p>
+<p>Auteur : <%- author%>, Modifié le : <%- lastChange %></p>
+<p>Type d'entée : <%-category%></p>
+<p>Lieu principal : <%-localization%></p>
+<br />
+<%- content %>
 <a href="/edit/<%= _id %>">Edite </a>
 <%- include('footer.html'); %>

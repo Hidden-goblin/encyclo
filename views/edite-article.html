@@ -5,6 +5,15 @@
 
 <form method="post" action="/edit/<%= _id%>">
 	<fieldset>
+	<label for="category">Catégorie </label>
+	<input id="category" type="text" name="category" value='<%-category%>' />
+	<br />
+	<label for="localization"> Localisation </label>
+	<input id="localization" type="text" name="localization" value='<%- localization%>' />
+	<br />
+	<imput id="localization" type="text" name="localization" />
+	<label for="abstract">Résumé </label>
+	<textarea id="abstract" name="abstract"><%- abstract%> </textarea>
 	<label for="content">Article content</label>
 	<textarea id="content" name="content"><%- content %></textarea>
 	</fieldset>

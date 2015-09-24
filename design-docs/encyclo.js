@@ -20,6 +20,11 @@ module.exports = {
     },
     update: function (doc, req) {
       var body = JSON.parse(req.body);
+        doc.lastAuthor = body.lastAuthor;
+        doc.lastChange = body.lastChange;
+        doc.abstract = body.abstract;
+        doc.localization = body.localization;
+        doc.category = body.category;
         doc.content = body.content;
         return[doc, toJSON(doc)];
     }
