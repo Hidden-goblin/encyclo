@@ -1,29 +1,30 @@
 <%- include('head.html'); %>
 <form method="post" action="/create">
-	<% if (typeof error !== 'undefined') { %> 
-		<p> ERROR </p>
-	<% } %>
-	<% if (typeof succes !== 'undefined') { %> 
-		<p> Youpi!! C'est entré. </p>
-	<% } %>
-	<fieldset>
-	<legend>Creation d'article</legend>
-	<label for="title">Title</label>
-	<input id="title" type="text" name="title"/>
-	<br />
-	<label for="category">Catégorie </label>
-	<input id="category" type="text" name="category"/>
-	<br />
-	<label for="localization"> Localisation </label>
-	<input id="localization" type="text" name="localization"/>
-	<br />
-	<imput id="localization" type="text" name="localization" />
-	<label for="abstract">Résumé </label>
-	<textarea id="abstract" name="abstract"> </textarea>
-	<br />
-	<label for="content">Article content</label>
-	<textarea id="content" name="content"></textarea>
-	</fieldset>
-	<button type="submit">Envoyer</button>
+  <% if (typeof error !== 'undefined') { %> 
+    <p> ERROR </p>
+  <% } %>
+  <% if (typeof succes !== 'undefined') { %> 
+    <p> Youpi!! C'est entré. </p>
+  <% } %>
+  <fieldset>
+    <legend>Creation d'article</legend>
+    <label for="title">Title</label>
+    <input id="title" type="text" name="title"/>
+    <br />
+    <label for="category">Catégorie </label>
+    <input id="category" type="text" name="category"/>
+    <br />
+    <label for="localization"> Localisation </label>
+    <input id="localization" type="text" name="localization"/>
+    <br />
+    <imput id="localization" type="text" name="localization" />
+    <label for="abstract">Résumé </label>
+    <textarea id="abstract" name="abstract"> </textarea>
+    <br />
+    <label for="content">Article content</label>
+    <textarea id="content" name="content"></textarea>
+  </fieldset>
+  <button type="submit">Envoyer</button>
 </form>
+
 <%- include('footer.html'); %>

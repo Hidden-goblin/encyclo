@@ -1,8 +1,10 @@
 <%- include('head.html'); %>
+
 <dl>
 <% rows.forEach( function ( row ){ %>
-	<dt><a href="/article/<%= row.id %>"><%= row.key %></a></dt>
-	<dd><%= row.value.abstract %></dd>
+  <dt><a href="/article/<%= row.id %>"><%= row.key %></a></dt>
+  <dd><%= row.value.abstract %></dd>
 <%	}); %>
 </dl>
+
 <%- include('footer.html'); %>
