@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Créer un nouvel article</title>
+  <title><%- title %></title>
   <link rel="stylesheet" type="text/css" href="/index.css" />
 </head>
 <body>
   <header>
     <ul>
       <li><a href="/">home</a></li>
-      <li><a href="/create">create</a></li>
+      <% if ( isConnected ) {%>
+        <li><a href="/create">create</a></li>
+      <% } %>
       <li><a href="/list">list</a></li>
+      <% if( isConnected ) {%>
+        <li><a href="/logout">logout</a></li>
+      <%}else{ %>
       <li><a href="/login">login</a></li>
+      <% } %>
     </ul>
   </header>
   <main>

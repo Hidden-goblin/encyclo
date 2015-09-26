@@ -12,10 +12,20 @@
     <input id="title" type="text" name="title"/>
     <br />
     <label for="category">Catégorie </label>
-    <input id="category" type="text" name="category"/>
+    <input id="category" list="category-list" type="text" name="category"/>
+      <datalist id="category-list">
+      <% categories.forEach(function(category) {%>
+        <option value="<%= category %>"></option>
+      <%});%>
+    </datalist> 
     <br />
     <label for="localization"> Localisation </label>
-    <input id="localization" type="text" name="localization"/>
+    <input id="localization" list="localization-list" type="text" name="localization"/>
+    <datalist id="localization-list">
+      <% localizations.forEach(function(localization) {%>
+        <option value="<%= localization %>"></option>
+      <%});%>
+    </datalist>
     <br />
     <imput id="localization" type="text" name="localization" />
     <label for="abstract">Résumé </label>

@@ -1,3 +1,7 @@
+var sumReduce = function (keys, values, rereduce) {
+  return sum(values);
+};
+
 module.exports = {
   _id: '_design/encyclo',
   updates: {
@@ -37,6 +41,28 @@ module.exports = {
                          localization: doc.localization,
                          category: doc.category, });
       },
+    },
+    byLetter: {
+      map: function(doc ) {
+        emit(doc._id[0], 1);
+      },
+      reduce: sumReduce,
+    },
+    byCategory: {
+      map: function(doc ) {
+        if( doc.category ) {
+        emit(doc.category, 1);
+      }
+      },
+      reduce: sumReduce,
+    },
+    byLocalization: {
+      map: function(doc) {
+        if( doc.localization ) {
+          emit(doc.localization, 1);
+        }
+      },
+      reduce: sumReduce,
     },
   },
 };

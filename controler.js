@@ -1,14 +1,10 @@
 "use strict";
 
 // COMMON JS IMPORTS
-var rc = require('rc');
-var conf = rc('encyclo');
-var hote = 'http://'+ conf.baselogin+':'+conf.basepasswd+'@localhost:5984';
-
-var nano  = require('nano')(hote);
 var slug  = require('slug'); // slug transform to url frienldy text
 var chalk = require('chalk'); // chalk is to color terminal output
 var markdown = require('markdown').markdown;// markdown text formatting
+var db = require('./db-utilities')
 
 var blue    = chalk.blue;
 var green   = chalk.green;
@@ -16,7 +12,6 @@ var grey    = chalk.grey;
 var yellow  = chalk.yellow;
 
 // Base de donnée
-var db = nano.use('encyclo');
 var designDocument = require('./design-docs/encyclo');
 
 ////// 
@@ -25,7 +20,7 @@ var designDocument = require('./design-docs/encyclo');
 
 function initDesignDocuments() {
   var name = designDocument._id;
-  db.head(name, function(err, res, headers) {
+  db.encyclo.head(name, function(err, res, headers) {
     // Send error if something else than no document
     if (err && err.statusCode !== 404) return console.log(err);
     // to be updated, couch docs needs the last revision in parameter
@@ -35,7 +30,7 @@ function initDesignDocuments() {
     console.log(designDocument);
 
     // update or create
-    db.insert(designDocument, function(err, body) {
+    db.encyclo.insert(designDocument, function(err, body) {
       if (err) return  console.log(err);
       console.log(green('design documents done'));
     });
@@ -57,8 +52,9 @@ function list(request, response){
   //  }
   //  return response.render('list.html', body);
   // });
-
-  db.view('encyclo', 'all', function(err, body) {
+  response.locals.title = 'Les articles de l\'encyclopédie';
+  
+  db.encyclo.view('encyclo', 'all', function(err, body) {
       if(err)return response.status(500).send('Error in the request');
       console.log(body);
      // console.log(markdown);
@@ -72,12 +68,13 @@ function list(request, response){
 
 // POST create
 
-
 var create = {
   get: function getArticleForm(request, response) {
-    // if ()
-  return response.render('createArticle.html');
-  },
+    return db.getLocalizationAndCategory( function(err, list) {
+      if (err) return response.render('erreur.html', {error: 'Les listes d\'autocomplétion n\'ont pas pu être remplies'}); 
+      return response.render('create-article.html',list )});
+    
+    },
   post: function createArticle(request, response) {
     var ca = blue('[CREATE]');
     console.log(ca, request.body);
@@ -88,7 +85,10 @@ var create = {
     body.author = request.user.id;
     body.lastAuthor = request.user.id;
     console.log(ca, body);
-    db.atomic("encyclo", "create", body.id, body, function (error, couchResp) {
+    
+    db.encyclo.atomic("encyclo", "create", body.id, body, handleResponse); 
+
+    function handleResponse(error, couchResp) {
       if (error) { 
         console.log(error);
         return response.render('createArticle.html',{error: true,});
@@ -96,18 +96,12 @@ var create = {
       console.log(ca, grey('couch response'), body);
       console.log(couchResp);
       // return response.redirect(302,'/article/'+body.id);
-      return response.render('article.html',{succes: true,
-                                            title: body.title,
-                                            author: body.author,
-                                            category: body.category,
-                                            localization: body.localization,
-                                            lastChange: body.lastChange,
-                                            content: markdown.toHTML(body.content),
-                                            _id: body.id,
-                                        })
-    }); 
+      couchResp.succes = true;
+      couchResp.content = markdown.toHTML( couchResp.content);
+      return response.render('article.html', couchResp);
+    }
   }
-}
+};
 
 // GET article
 function article(request, response) {
@@ -115,17 +109,18 @@ function article(request, response) {
   console.log(prefix, request.params);
   var id = request.params.name;
   console.log(prefix, grey('get with id'), id);
-  db.get( id, function (err, body) {
+  db.encyclo.get( id, function (err, couchResp) {
     if (err) return response.status(404).send(404);
-    console.log(prefix, grey('couch response'), body);
-    body.content = markdown.toHTML(body.content);
-    return response.render('article.html', body);
+    console.log(prefix, grey('couch response'), couchResp);
+    couchResp.content = markdown.toHTML(couchResp.content);
+    return response.render('article.html', couchResp);
   });
 }
 
 
 var login = {
   get: function getLogin(request, response) {
+      response.locals.title = 'Login';
       return response.render('login.html');
   },
   post: function postLogin(request, response) {
@@ -141,10 +136,10 @@ var editeArticle = {
   get: function getEditeArticle(request, response) {
     console.log(request.params);
     var id = request.params._id;
-    db.get( id, function (err, body) {
+    db.encyclo.get( id, function (err, couchResp) {
       if ( err ) return response.render('erreur.html',{error:'Article non trouvé dans la base ou erreur de requête à la base.'});
-        body.content = body.content.trim();
-        return response.render('edite-article.html', body);
+        couchResp.content = couchResp.content.trim();
+        return response.render('edite-article.html', couchResp);
     })
   },
   post: function postEditeArticle(request, response) {
@@ -154,36 +149,19 @@ var editeArticle = {
     var today = new Date();
     body.lastChange = today.toString();
     body.lastAuthor = request.user.id;
-    db.atomic("encyclo", "update", request.params._id, request.body, function (error, couchResp) {
+    body.content = body.content.trim();
+    db.encyclo.atomic("encyclo", "update", request.params._id, body, function (error, couchResp) {
       if (error) { 
         console.log(error);
         return response.render('createArticle.html',{error: true,});
       }
       console.log(ca, grey('couch response'), request.body);
       console.log(couchResp);
-      // return response.render('article.html',{succes: true,
-      //                                       title: body.title,
-      //                                       author: body.author,
-      //                                       category: body.category,
-      //                                       localization: body.localization,
-      //                                       lastChange: body.lastChange,
-      //                                       content: markdown.toHTML(body.content),
-      //                                       _id: body.id,
-      //                                   }) 
-      db.get( request.params._id, function (err, body) {
-        console.log(blue( '[POST UPTDATE GET] for new display'));
-        console.log(yellow(body.name));
-        if ( err ) return response.render('erreur.hml', {error: 'L\'article demandé ne peut pas être affiché'});
-          return response.render('article.html',{succes: true,
-                                            title: body.title,
-                                            author: body.author,
-                                            category: body.category,
-                                            localization: body.localization,
-                                            lastChange: body.lastChange,
-                                            content: markdown.toHTML(body.content),
-                                            _id: request.params._id, });
+      couchResp.succes = true;
+      couchResp.content = markdown.toHTML(couchResp.content);
+          return response.render('article.html',couchResp);
       }); 
-      })}
+  },
 };
 
 ////// 

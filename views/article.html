@@ -10,6 +10,7 @@
 <p>Lieu principal : <%-localization%></p>
 <br />
 <%- content %>
+<% if( isConnected ) {%>
 <a href="/edit/<%= _id %>">Edite </a>
-
+<% } %>
 <%- include('footer.html'); %>
