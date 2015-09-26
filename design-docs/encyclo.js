@@ -16,20 +16,20 @@ module.exports = {
           lastChange: body.lastChange,
           lastAuthor: body.lastAuthor,
           author: body.author,
-          localization: body.localization,
-          category: body.category,
+          localization: body.localization.toLowerCase(),
+          category: body.category.toLowerCase(),
         };
         return[doc,toJSON(doc)];
       }
     },
     update: function (doc, req) {
       var body = JSON.parse(req.body);
-        doc.lastAuthor = body.lastAuthor;
-        doc.lastChange = body.lastChange;
-        doc.abstract = body.abstract;
-        doc.localization = body.localization;
-        doc.category = body.category;
-        doc.content = body.content;
+        doc.lastAuthor = body.lastAuthor || doc.lastAuthor;// should done with revs (-> see fetch )
+        doc.lastChange = new Date().toString();
+        doc.abstract = body.abstract || doc.abstract;
+        doc.localization = body.localization.toLowerCase() || doc.localization;
+        doc.category = body.category.toLowerCase() || doc.category;
+        doc.content = body.content || doc.content;
         return[doc, toJSON(doc)];
     }
   },

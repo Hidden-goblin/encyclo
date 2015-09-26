@@ -1,21 +1,30 @@
 <%- include('head.html'); %>
 <h2>Article</h2>
-<h1>Édition de <%= title %></h1>
-<p><%- content %></p>
+<h1>Édition de <%= article[0].title %></h1>
+<p><%- article[0].content %></p>
 
-<form method="post" action="/edit/<%= _id%>">
+<form method="post" action="/edit/<%= article[0]._id%>">
 	<fieldset>
 	<label for="category">Catégorie </label>
-	<input id="category" type="text" name="category" value='<%-category%>' />
+    <input id="category" list="category-list" type="text" name="category" value="<%=article[0].category%>" />
+      <datalist id="category-list">
+      <% listings.categories.forEach(function(category) {%>
+        <option value="<%= category %>"></option>
+      <%});%>
+    </datalist> 
+    <br />
+    <label for="localization"> Localisation </label>
+    <input id="localization" list="localization-list" type="text" name="localization" value="<%=article.localization%>"/>
+    <datalist id="localization-list">
+      <% listings.localizations.forEach(function(localization) {%>
+        <option value="<%= localization %>"></option>
+      <%});%>
+    </datalist>
 	<br />
-	<label for="localization"> Localisation </label>
-	<input id="localization" type="text" name="localization" value='<%- localization%>' />
-	<br />
-	<imput id="localization" type="text" name="localization" />
 	<label for="abstract">Résumé </label>
-	<textarea id="abstract" name="abstract"><%- abstract%> </textarea>
+	<textarea id="abstract" name="abstract"><%- article[0].abstract%> </textarea>
 	<label for="content">Article content</label>
-	<textarea id="content" name="content"><%- content %></textarea>
+	<textarea id="content" name="content"><%- article[0].content %></textarea>
 	</fieldset>
 	<button type="submit">Envoyer</button>
 </form>

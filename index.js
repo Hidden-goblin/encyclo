@@ -1,10 +1,12 @@
 'use strict';
 // Chargement du module
 var express = require( 'express' );
-var controler = require( './controler');
+
 var bodyParser = require('body-parser');
 // var cookieParser = require('cookie-parser');
 var session = require('express-session');
+
+var controler = require( './controler');
 var auth = require('./auth');
 
 ////// 
@@ -23,9 +25,10 @@ var app = express();
 // Ajout middleware 
 // app.use(cookieParser('keyboard cat'));
 
-app.use(session({ secret: 'keyboard cat',
-                  cookie: { maxAge: 600000,},
-                 }));
+app.use(session({ 
+  secret: 'keyboard cat',
+  cookie: { maxAge: 600000,},
+}));
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -33,7 +36,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 auth.init(app);
 // set static file folder
 // http://expressjs.com/api.html#express.static
-app.use(express.static('./public'))
+app.use(express.static('./public'));
+app.use(express.static('./node_modules/epiceditor/epiceditor'));
 
 // define template engine
 // http://expressjs.com/api.html#app.engine

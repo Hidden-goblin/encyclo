@@ -3,6 +3,7 @@
 // COMMON JS IMPORTS
 var slug  = require('slug'); // slug transform to url frienldy text
 var chalk = require('chalk'); // chalk is to color terminal output
+var async = require('async'); // synchronize callbacks
 var markdown = require('markdown').markdown;// markdown text formatting
 var db = require('./db-utilities')
 
@@ -136,18 +137,22 @@ var editeArticle = {
   get: function getEditeArticle(request, response) {
     console.log(request.params);
     var id = request.params._id;
-    db.encyclo.get( id, function (err, couchResp) {
+    async.parallel({
+      article: function(callback) {
+        db.encyclo.get( id, callback );    
+      },
+      listings: function(callback) {
+        db.getLocalizationAndCategory(callback);
+      },
+    }, function(err, body) {
       if ( err ) return response.render('erreur.html',{error:'Article non trouvé dans la base ou erreur de requête à la base.'});
-        couchResp.content = couchResp.content.trim();
-        return response.render('edite-article.html', couchResp);
-    })
+      return response.render('edite-article.html', body);
+    });
   },
   post: function postEditeArticle(request, response) {
     var ca = blue('[UPDATE]');
     console.log(request.params);
     var body = request.body;
-    var today = new Date();
-    body.lastChange = today.toString();
     body.lastAuthor = request.user.id;
     body.content = body.content.trim();
     db.encyclo.atomic("encyclo", "update", request.params._id, body, function (error, couchResp) {

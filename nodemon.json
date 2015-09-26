@@ -1,0 +1,4 @@
+{
+  "verbose": false,
+  "ignore": ["/css", "/js", "/public", "/node_modules"]
+}
