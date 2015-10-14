@@ -9,24 +9,26 @@ var session = require('express-session');
 var controler = require( './controler');
 var auth = require('./auth');
 
-////// 
+//////
 // DB CONFIG
-////// 
+//////
 
 controler.initDB();
 
-////// 
+//////
 // SERVER CONFIG
-////// 
+//////
 
 
 // Création d'une instance d'express
 var app = express();
-// Ajout middleware 
+// Ajout middleware
 // app.use(cookieParser('keyboard cat'));
 
-app.use(session({ 
+app.use(session({
   secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
   cookie: { maxAge: 600000,},
 }));
 
@@ -45,9 +47,9 @@ app.use(express.static('./node_modules/epiceditor/epiceditor'));
 app.engine('html', require('ejs').renderFile);
 
 
-////// 
+//////
 // ROUTING
-////// 
+//////
 
 app.all('*', function (request, response, next) {
    response.locals.title = 'Accueil de l\'encyclopédie';
@@ -79,16 +81,16 @@ app.get('/logout', function (request, response, next )
 
 app.get('/list', controler.list);
 
-app.get('/', function index( request, response, next){ 
+app.get('/', function index( request, response, next){
   return response.render('hello.html', {name: 'world'});
 });
 
-////// 
+//////
 // LAUNCHING
-////// 
+//////
 
 var server = app.listen(3000, function endInit(){
   console.log("Server is listening on port ", server.address().port);
   var today = new Date();
   console.log( today.toString() );
-}); 
+});

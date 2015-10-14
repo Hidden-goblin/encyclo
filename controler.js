@@ -5,6 +5,16 @@ var slug  = require('slug'); // slug transform to url frienldy text
 var chalk = require('chalk'); // chalk is to color terminal output
 var async = require('async'); // synchronize callbacks
 var markdown = require('markdown').markdown;// markdown text formatting
+var _ = require('lodash');
+var log4js = require('log4js');
+log4js.configure({
+  appenders: [
+    { type: 'file', filename: 'logs/current.log', category: 'current', maxLogSize: 20480, backup: 0 }
+  ]
+});
+var logger = log4js.getLogger('current');
+logger.setLevel('ALL');
+
 var db = require('./db-utilities')
 
 var blue    = chalk.blue;
@@ -15,9 +25,9 @@ var yellow  = chalk.yellow;
 // Base de donnée
 var designDocument = require('./design-docs/encyclo');
 
-////// 
+//////
 // DB SETUP FUNCTION
-////// 
+//////
 
 function initDesignDocuments() {
   var name = designDocument._id;
@@ -27,21 +37,19 @@ function initDesignDocuments() {
     // to be updated, couch docs needs the last revision in parameter
     // -> Add current rev if doc exist
     if (headers && headers.etag) designDocument._rev = headers.etag.replace(/"/g,'');
-    // console.log(headers.etag);
-    console.log(designDocument);
-
     // update or create
     db.encyclo.insert(designDocument, function(err, body) {
       if (err) return  console.log(err);
+      logger.trace('design documents done');
       console.log(green('design documents done'));
     });
-    
+
   });
 }
 
-////// 
+//////
 // ROUTING CONTROLLERS
-////// 
+//////
 
 // GET list
 function list(request, response){
@@ -54,10 +62,10 @@ function list(request, response){
   //  return response.render('list.html', body);
   // });
   response.locals.title = 'Les articles de l\'encyclopédie';
-  
+
   db.encyclo.view('encyclo', 'all', function(err, body) {
       if(err)return response.status(500).send('Error in the request');
-      console.log(body);
+      logger.trace(body);
      // console.log(markdown);
       // body.rows.forEach(function(row){
         // row.value = markdown.toHTML(row.value);
@@ -69,36 +77,56 @@ function list(request, response){
 
 // POST create
 
+function createInformation( request, response ) {
+  logger.trace('createInformation');
+  var body = {};
+    if ( request.body === undefined || request.body.title === undefined) {
+      logger.trace('Creating an empty content and title');
+      console.log( 'previous request', request.body );
+      body.article = [{content: ' ', title: ''}];
+    }
+    else {
+      logger.trace('Retrieving previous body');
+      body = request.body;
+    }
+    return db.getLocalizationAndCategory( function(err, list) {
+      if (err) return response.render('erreur.html', {error: 'Les listes d\'autocomplétion n\'ont pas pu être remplies'});
+      _.assign( body, list);
+      console.log('data to create-article', body);
+      return response.render('create-article.html', body)});
+};
+
 var create = {
   get: function getArticleForm(request, response) {
-    return db.getLocalizationAndCategory( function(err, list) {
-      if (err) return response.render('erreur.html', {error: 'Les listes d\'autocomplétion n\'ont pas pu être remplies'}); 
-      return response.render('create-article.html',list )});
-    
+    logger.trace('getArticleForm');
+    return createInformation( request, response );
     },
   post: function createArticle(request, response) {
-    var ca = blue('[CREATE]');
-    console.log(ca, request.body);
+    logger.trace(request.body);
+    // body must have been checked by front
     var body =  request.body;
     body.id = slug(body.title.trim(),slug.defaults.modes['rfc3986']);
     var today = new Date();
     body.lastChange = today.toString();
     body.author = request.user.id;
     body.lastAuthor = request.user.id;
-    console.log(ca, body);
-    
-    db.encyclo.atomic("encyclo", "create", body.id, body, handleResponse); 
+
+    db.encyclo.atomic("encyclo", "create", body.id, body, handleResponse);
 
     function handleResponse(error, couchResp) {
-      if (error) { 
-        console.log(error);
-        return response.render('createArticle.html',{error: true,});
+      if (error) {
+        logger.error('Article haven\'t been created');
+        console.log('couchResp', couchResp);
+        console.log('error', error);
+        _.assign( request, {error: true,} );
+        return createInformation( request, response );
       }
-      console.log(ca, grey('couch response'), body);
-      console.log(couchResp);
+      // console.log(ca, grey('couch response'), body);
+      // console.log(couchResp);
       // return response.redirect(302,'/article/'+body.id);
       couchResp.succes = true;
       couchResp.content = markdown.toHTML( couchResp.content);
+      request = {};
       return response.render('article.html', couchResp);
     }
   }
@@ -128,7 +156,7 @@ var login = {
     var prefix  = blue('[LOGIN]');
     var body    =  request.body;
     console.log(prefix, body);
-    
+
     return response.render('login.html');
   },
 };
@@ -139,7 +167,7 @@ var editeArticle = {
     var id = request.params._id;
     async.parallel({
       article: function(callback) {
-        db.encyclo.get( id, callback );    
+        db.encyclo.get( id, callback );
       },
       listings: function(callback) {
         db.getLocalizationAndCategory(callback);
@@ -156,7 +184,7 @@ var editeArticle = {
     body.lastAuthor = request.user.id;
     body.content = body.content.trim();
     db.encyclo.atomic("encyclo", "update", request.params._id, body, function (error, couchResp) {
-      if (error) { 
+      if (error) {
         console.log(error);
         return response.render('createArticle.html',{error: true,});
       }
@@ -165,13 +193,13 @@ var editeArticle = {
       couchResp.succes = true;
       couchResp.content = markdown.toHTML(couchResp.content);
           return response.render('article.html',couchResp);
-      }); 
+      });
   },
 };
 
-////// 
+//////
 // COMMON JS EXPORTS
-////// 
+//////
 
 module.exports = {
   list: list,

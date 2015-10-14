@@ -1,15 +1,15 @@
-<%- include('head.html'); %>
+  <%- include('head.html'); %>
 <form method="post" action="/create">
-  <% if (typeof error !== 'undefined') { %> 
+  <% if (typeof error !== 'undefined') { %>
     <p> ERROR </p>
   <% } %>
-  <% if (typeof succes !== 'undefined') { %> 
+  <% if (typeof succes !== 'undefined') { %>
     <p> Youpi!! C'est entré. </p>
   <% } %>
   <fieldset>
     <legend>Creation d'article</legend>
     <label for="title">Title</label>
-    <input id="title" type="text" name="title"/>
+    <input id="title" type="text" name="title" value="<%- article[0].title %>" />
     <br />
     <label for="category">Catégorie </label>
     <input id="category" list="category-list" type="text" name="category"/>
@@ -17,7 +17,7 @@
       <% categories.forEach(function(category) {%>
         <option value="<%= category %>"></option>
       <%});%>
-    </datalist> 
+    </datalist>
     <br />
     <label for="localization"> Localisation </label>
     <input id="localization" list="localization-list" type="text" name="localization"/>
@@ -27,12 +27,8 @@
       <%});%>
     </datalist>
     <br />
-    <imput id="localization" type="text" name="localization" />
-    <label for="abstract">Résumé </label>
-    <textarea id="abstract" name="abstract"> </textarea>
-    <br />
     <label for="content">Article content</label>
-    <textarea id="content" name="content"></textarea>
+    <textarea id="content" name="content"><%- article[0].content %></textarea>
   </fieldset>
   <button type="submit">Envoyer</button>
 </form>

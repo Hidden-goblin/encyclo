@@ -12,7 +12,7 @@ require('epiceditor/src/editor');
 // We don't want useless div in our templates
 // JS will create what we need in order to initialize the Epic Editor
 $('textarea').each(function () {
-  var $textarea  = $(this);  
+  var $textarea  = $(this);
   $textarea.hide();
   var $container  = $('<div class="epiceditorContainer"></div>');
   $container.insertAfter($textarea);

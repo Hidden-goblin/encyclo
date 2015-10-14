@@ -1,10 +1,12 @@
+// https://learnboost.github.io/stylus/
+
 $gutter = 20px;
 
 html {
     font-family: sans-serif;
 }
 
-html, 
+html,
 body {
   min-height: 100vh;
   padding: 0;
@@ -16,22 +18,22 @@ body {
   flex-direction: column;
 }
 
-header, 
-main, 
+header,
+main,
 footer {
   padding-left: calc(50% - 512px);
   padding-right: @padding-left;
 }
 header {
-  background: #222;  
+  background: #222;
   text-align: center;
-  
-  ul, 
+
+  ul,
   li {
     margin: 0;
     padding: 0;
   }
-  li, 
+  li,
   a {
     display: inline-block;
   }
@@ -55,19 +57,19 @@ main {
   flex-shrink: 0;
   // IE 9
   display: block;
-  
+
   @media (min-width: 1025px)  {
     margin-left: calc(50% - 512px);
     margin-right: @margin-left;
   }
-  
+
   a {
   color: mediumVioletRed;
   }
 }
 
 footer {
-  background: #222;  
+  background: #222;
   min-height: 50px;
 }
 
@@ -80,7 +82,7 @@ legend {
   font-size: 2em;
 }
 label {
-  padding: 1.5em 0 .5em; 
+  padding: 1.5em 0 .5em;
   display: block;
 }
 

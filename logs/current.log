@@ -1,0 +1,210 @@
+[2015-10-12 17:54:17.574] [TRACE] current - design documents done
+[2015-10-12 17:54:45.213] [TRACE] current - design documents done
+[2015-10-12 18:04:31.388] [TRACE] current - design documents done
+[2015-10-12 18:11:29.885] [TRACE] current - design documents done
+[2015-10-12 18:46:37.980] [TRACE] current - design documents done
+[2015-10-12 20:49:36.900] [TRACE] current - design documents done
+[2015-10-12 20:49:56.320] [TRACE] current - getArticleForm
+[2015-10-12 20:51:11.990] [TRACE] current - design documents done
+[2015-10-12 20:51:22.837] [TRACE] current - getArticleForm
+[2015-10-12 20:56:21.454] [TRACE] current - design documents done
+[2015-10-12 20:57:19.829] [TRACE] current - design documents done
+[2015-10-12 20:57:33.036] [TRACE] current - getArticleForm
+[2015-10-12 21:03:29.453] [TRACE] current - design documents done
+[2015-10-12 21:03:46.938] [TRACE] current - getArticleForm
+[2015-10-12 21:04:36.260] [TRACE] current - design documents done
+[2015-10-12 21:04:51.889] [TRACE] current - getArticleForm
+[2015-10-12 21:05:55.845] [TRACE] current - design documents done
+[2015-10-12 21:06:11.476] [TRACE] current - getArticleForm
+[2015-10-12 21:07:09.868] [TRACE] current - design documents done
+[2015-10-12 21:07:24.137] [TRACE] current - getArticleForm
+[2015-10-12 21:09:23.267] [TRACE] current - design documents done
+[2015-10-12 21:09:29.341] [TRACE] current - design documents done
+[2015-10-12 21:10:32.828] [TRACE] current - design documents done
+[2015-10-12 21:10:53.802] [TRACE] current - getArticleForm
+[2015-10-13 08:47:01.296] [TRACE] current - design documents done
+[2015-10-13 08:47:23.864] [TRACE] current - getArticleForm
+[2015-10-13 08:49:25.813] [TRACE] current - getArticleForm
+[2015-10-13 08:49:33.938] [TRACE] current - getArticleForm
+[2015-10-13 08:52:39.634] [TRACE] current - design documents done
+[2015-10-13 08:52:56.669] [TRACE] current - getArticleForm
+[2015-10-13 08:53:25.761] [TRACE] current - design documents done
+[2015-10-13 08:53:39.678] [TRACE] current - getArticleForm
+[2015-10-13 08:53:52.569] [TRACE] current - design documents done
+[2015-10-13 08:54:04.041] [TRACE] current - getArticleForm
+[2015-10-13 10:00:50.838] [TRACE] current - design documents done
+[2015-10-13 14:55:14.080] [TRACE] current - design documents done
+[2015-10-13 14:56:38.611] [TRACE] current - design documents done
+[2015-10-13 14:58:24.014] [TRACE] current - design documents done
+[2015-10-13 15:01:46.732] [TRACE] current - design documents done
+[2015-10-13 15:02:41.848] [TRACE] current - design documents done
+[2015-10-13 15:03:29.881] [TRACE] current - getArticleForm
+[2015-10-13 15:03:29.881] [TRACE] current - Creating an empty content and title
+[2015-10-13 15:03:41.608] [TRACE] current - { title: '', category: '', localization: '', content: 'totot ' }
+[2015-10-13 15:03:41.634] [ERROR] current - Article haven't been created
+[2015-10-13 15:05:59.831] [TRACE] current - design documents done
+[2015-10-13 15:06:31.533] [TRACE] current - getArticleForm
+[2015-10-13 15:06:31.533] [TRACE] current - Creating an empty content and title
+[2015-10-13 15:06:39.423] [TRACE] current - { title: '',
+  category: '',
+  localization: '',
+  content: 'toto\r\n\r\n ' }
+[2015-10-13 15:06:39.438] [ERROR] current - Article haven't been created
+[2015-10-13 15:11:03.612] [TRACE] current - design documents done
+[2015-10-13 15:11:23.722] [TRACE] current - getArticleForm
+[2015-10-13 15:11:23.722] [TRACE] current - Creating an empty content and title
+[2015-10-13 15:11:28.786] [TRACE] current - { title: '', category: '', localization: '', content: 'toto ' }
+[2015-10-13 15:11:28.800] [ERROR] current - Article haven't been created
+[2015-10-14 09:19:32.514] [TRACE] current - getArticleForm
+[2015-10-14 09:19:32.514] [TRACE] current - Creating an empty content and title
+[2015-10-14 09:22:28.478] [TRACE] current - getArticleForm
+[2015-10-14 09:22:28.478] [TRACE] current - Creating an empty content and title
+[2015-10-14 17:36:03.311] [TRACE] current - design documents done
+[2015-10-14 17:36:21.343] [TRACE] current - getArticleForm
+[2015-10-14 17:36:21.344] [TRACE] current - createInformation
+[2015-10-14 17:36:21.344] [TRACE] current - Creating an empty content and title
+[2015-10-14 17:37:14.756] [TRACE] current - design documents done
+[2015-10-14 17:37:28.526] [TRACE] current - design documents done
+[2015-10-14 17:37:52.405] [TRACE] current - getArticleForm
+[2015-10-14 17:37:52.406] [TRACE] current - createInformation
+[2015-10-14 17:37:52.406] [TRACE] current - Creating an empty content and title
+[2015-10-14 17:38:03.993] [TRACE] current - { title: '', category: '', localization: '', content: 'ikxx' }
+[2015-10-14 17:38:04.019] [ERROR] current - Article haven't been created
+[2015-10-14 17:49:04.132] [TRACE] current - design documents done
+[2015-10-14 17:49:47.507] [TRACE] current - design documents done
+[2015-10-14 17:50:07.493] [TRACE] current - getArticleForm
+[2015-10-14 17:50:07.494] [TRACE] current - createInformation
+[2015-10-14 17:50:07.494] [TRACE] current - Creating an empty content and title
+[2015-10-14 17:50:13.354] [TRACE] current - { title: '', category: '', localization: '', content: 'ikxx' }
+[2015-10-14 17:50:13.369] [ERROR] current - Article haven't been created
+[2015-10-14 17:50:13.378] [TRACE] current - createInformation
+[2015-10-14 17:50:13.378] [TRACE] current - Retrieving previous body
+[2015-10-14 17:50:42.675] [TRACE] current - { title: 'ikxx',
+  category: 'ao',
+  localization: 'aeloc',
+  content: 'ikxx' }
+[2015-10-14 17:51:00.468] [TRACE] current - getArticleForm
+[2015-10-14 17:51:00.469] [TRACE] current - createInformation
+[2015-10-14 17:51:00.469] [TRACE] current - Creating an empty content and title
+[2015-10-14 17:54:12.727] [TRACE] current - design documents done
+[2015-10-14 17:54:26.198] [TRACE] current - getArticleForm
+[2015-10-14 17:54:26.198] [TRACE] current - createInformation
+[2015-10-14 17:54:26.198] [TRACE] current - Creating an empty content and title
+[2015-10-14 17:55:17.148] [TRACE] current - design documents done
+[2015-10-14 18:00:15.315] [TRACE] current - design documents done
+[2015-10-14 18:00:32.118] [TRACE] current - { total_rows: 10,
+  offset: 0,
+  rows: 
+   [ { id: 'ae', key: 'ae', value: [Object] },
+     { id: 'al', key: 'al', value: [Object] },
+     { id: 'all', key: 'all', value: [Object] },
+     { id: 'ao', key: 'ao', value: [Object] },
+     { id: 'ikxx', key: 'ikxx', value: [Object] },
+     { id: 'lolo', key: 'lolo', value: [Object] },
+     { id: 'toto', key: 'toto', value: [Object] },
+     { id: 'totoc', key: 'totoc', value: [Object] },
+     { id: 'totolo', key: 'totolo', value: [Object] },
+     { id: 'xxtot', key: 'xxtot', value: [Object] } ] }
+[2015-10-14 18:00:42.100] [TRACE] current - getArticleForm
+[2015-10-14 18:00:42.100] [TRACE] current - createInformation
+[2015-10-14 18:00:42.100] [TRACE] current - Creating an empty content and title
+[2015-10-14 18:02:32.233] [TRACE] current - design documents done
+[2015-10-14 18:02:41.403] [TRACE] current - { total_rows: 10,
+  offset: 0,
+  rows: 
+   [ { id: 'ae', key: 'ae', value: [Object] },
+     { id: 'al', key: 'al', value: [Object] },
+     { id: 'all', key: 'all', value: [Object] },
+     { id: 'ao', key: 'ao', value: [Object] },
+     { id: 'ikxx', key: 'ikxx', value: [Object] },
+     { id: 'lolo', key: 'lolo', value: [Object] },
+     { id: 'toto', key: 'toto', value: [Object] },
+     { id: 'totoc', key: 'totoc', value: [Object] },
+     { id: 'totolo', key: 'totolo', value: [Object] },
+     { id: 'xxtot', key: 'xxtot', value: [Object] } ] }
+[2015-10-14 18:03:15.396] [TRACE] current - getArticleForm
+[2015-10-14 18:03:15.396] [TRACE] current - createInformation
+[2015-10-14 18:03:15.396] [TRACE] current - Creating an empty content and title
+[2015-10-14 18:04:46.241] [TRACE] current - design documents done
+[2015-10-14 18:04:53.159] [TRACE] current - { total_rows: 10,
+  offset: 0,
+  rows: 
+   [ { id: 'ae', key: 'ae', value: [Object] },
+     { id: 'al', key: 'al', value: [Object] },
+     { id: 'all', key: 'all', value: [Object] },
+     { id: 'ao', key: 'ao', value: [Object] },
+     { id: 'ikxx', key: 'ikxx', value: [Object] },
+     { id: 'lolo', key: 'lolo', value: [Object] },
+     { id: 'toto', key: 'toto', value: [Object] },
+     { id: 'totoc', key: 'totoc', value: [Object] },
+     { id: 'totolo', key: 'totolo', value: [Object] },
+     { id: 'xxtot', key: 'xxtot', value: [Object] } ] }
+[2015-10-14 18:05:02.444] [TRACE] current - getArticleForm
+[2015-10-14 18:05:02.444] [TRACE] current - createInformation
+[2015-10-14 18:05:02.444] [TRACE] current - Creating an empty content and title
+[2015-10-14 18:07:30.956] [TRACE] current - { total_rows: 10,
+  offset: 0,
+  rows: 
+   [ { id: 'ae', key: 'ae', value: [Object] },
+     { id: 'al', key: 'al', value: [Object] },
+     { id: 'all', key: 'all', value: [Object] },
+     { id: 'ao', key: 'ao', value: [Object] },
+     { id: 'ikxx', key: 'ikxx', value: [Object] },
+     { id: 'lolo', key: 'lolo', value: [Object] },
+     { id: 'toto', key: 'toto', value: [Object] },
+     { id: 'totoc', key: 'totoc', value: [Object] },
+     { id: 'totolo', key: 'totolo', value: [Object] },
+     { id: 'xxtot', key: 'xxtot', value: [Object] } ] }
+[2015-10-14 18:07:35.552] [TRACE] current - getArticleForm
+[2015-10-14 18:07:35.552] [TRACE] current - createInformation
+[2015-10-14 18:07:35.552] [TRACE] current - Creating an empty content and title
+[2015-10-14 18:09:05.619] [TRACE] current - { total_rows: 10,
+  offset: 0,
+  rows: 
+   [ { id: 'ae', key: 'ae', value: [Object] },
+     { id: 'al', key: 'al', value: [Object] },
+     { id: 'all', key: 'all', value: [Object] },
+     { id: 'ao', key: 'ao', value: [Object] },
+     { id: 'ikxx', key: 'ikxx', value: [Object] },
+     { id: 'lolo', key: 'lolo', value: [Object] },
+     { id: 'toto', key: 'toto', value: [Object] },
+     { id: 'totoc', key: 'totoc', value: [Object] },
+     { id: 'totolo', key: 'totolo', value: [Object] },
+     { id: 'xxtot', key: 'xxtot', value: [Object] } ] }
+[2015-10-14 18:09:21.433] [TRACE] current - getArticleForm
+[2015-10-14 18:09:21.434] [TRACE] current - createInformation
+[2015-10-14 18:09:21.434] [TRACE] current - Creating an empty content and title
+[2015-10-14 18:10:16.734] [TRACE] current - { total_rows: 10,
+  offset: 0,
+  rows: 
+   [ { id: 'ae', key: 'ae', value: [Object] },
+     { id: 'al', key: 'al', value: [Object] },
+     { id: 'all', key: 'all', value: [Object] },
+     { id: 'ao', key: 'ao', value: [Object] },
+     { id: 'ikxx', key: 'ikxx', value: [Object] },
+     { id: 'lolo', key: 'lolo', value: [Object] },
+     { id: 'toto', key: 'toto', value: [Object] },
+     { id: 'totoc', key: 'totoc', value: [Object] },
+     { id: 'totolo', key: 'totolo', value: [Object] },
+     { id: 'xxtot', key: 'xxtot', value: [Object] } ] }
+[2015-10-14 18:10:33.242] [TRACE] current - getArticleForm
+[2015-10-14 18:10:33.243] [TRACE] current - createInformation
+[2015-10-14 18:10:33.243] [TRACE] current - Creating an empty content and title
+[2015-10-14 18:11:00.476] [TRACE] current - { title: 'zorro',
+  category: 'perso',
+  localization: 'las lobos',
+  content: 'the renardo ' }
+[2015-10-14 18:11:03.819] [TRACE] current - { total_rows: 11,
+  offset: 0,
+  rows: 
+   [ { id: 'ae', key: 'ae', value: [Object] },
+     { id: 'al', key: 'al', value: [Object] },
+     { id: 'all', key: 'all', value: [Object] },
+     { id: 'ao', key: 'ao', value: [Object] },
+     { id: 'ikxx', key: 'ikxx', value: [Object] },
+     { id: 'lolo', key: 'lolo', value: [Object] },
+     { id: 'toto', key: 'toto', value: [Object] },
+     { id: 'totoc', key: 'totoc', value: [Object] },
+     { id: 'totolo', key: 'totolo', value: [Object] },
+     { id: 'xxtot', key: 'xxtot', value: [Object] },
+     { id: 'zorro', key: 'zorro', value: [Object] } ] }

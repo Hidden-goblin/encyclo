@@ -11,18 +11,16 @@
       <% listings.categories.forEach(function(category) {%>
         <option value="<%= category %>"></option>
       <%});%>
-    </datalist> 
+    </datalist>
     <br />
     <label for="localization"> Localisation </label>
-    <input id="localization" list="localization-list" type="text" name="localization" value="<%=article.localization%>"/>
+    <input id="localization" list="localization-list" type="text" name="localization" value="<%=article[0].localization%>"/>
     <datalist id="localization-list">
       <% listings.localizations.forEach(function(localization) {%>
         <option value="<%= localization %>"></option>
       <%});%>
     </datalist>
 	<br />
-	<label for="abstract">Résumé </label>
-	<textarea id="abstract" name="abstract"><%- article[0].abstract%> </textarea>
 	<label for="content">Article content</label>
 	<textarea id="content" name="content"><%- article[0].content %></textarea>
 	</fieldset>
