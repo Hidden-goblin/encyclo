@@ -206,23 +206,28 @@ var upload = {
   },
   post: function postUpload( request, response){
     var form = new formidable.IncomingForm();
-    form.parse(request, function(err, fields, files) {
-    response.writeHead(200, {'content-type': 'text/plain'});
-    response.write('received upload:\n\n');
-    response.end(util.inspect({fields: fields, files: files}));
-  });
-     form.on('end', function(fields, files) {
-     // Temporary location of our uploaded file
-    var temp_path = this.openedFiles[0].path;
-     // The file name of the uploaded file
-    var file_name = this.openedFiles[0].name;
-     // Location where we want to copy the uploaded file
-    var new_location = 'uploads/';
-
-    fs.copy(temp_path, new_location + file_name, function(err) {
-      // if ( err ) return response.render('erreur.html',{error:'Article non trouvé dans la base ou erreur de requête à la base.'});
-      // console.log('copied??');
+    var files = [];
+    var fields = [];
+    form.parse(request);
+    form.on('field', function(field, value) {
+      fields.push([field, value]);
     });
+
+    form.on('file', function(field, file) {
+      files.push([field, file]);
+      var temp_path = this.openedFiles[0].path;
+      // The file name of the uploaded file
+      var file_name = this.openedFiles[0].name;
+      // Location where we want to copy the uploaded file
+      var new_location = 'uploads/';
+      console.log('temp_path', temp_path);
+      console.log('file_name', file_name);
+      fs.copy(temp_path, new_location + file_name, function(err) {
+      if ( err ) return response.render('erreur.html',{error:'File not uploaded'});
+    });
+    });
+     form.on('end', function(fields, files) {
+       return response.render("upload.html");
   });
   }
 };
