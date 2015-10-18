@@ -208,3 +208,123 @@
      { id: 'totolo', key: 'totolo', value: [Object] },
      { id: 'xxtot', key: 'xxtot', value: [Object] },
      { id: 'zorro', key: 'zorro', value: [Object] } ] }
+[2015-10-16 09:36:01.415] [TRACE] current - design documents done
+[2015-10-16 09:51:30.509] [TRACE] current - getArticleForm
+[2015-10-16 09:51:30.510] [TRACE] current - createInformation
+[2015-10-16 09:51:30.510] [TRACE] current - Creating an empty content and title
+[2015-10-16 09:51:39.463] [TRACE] current - { title: '',
+  category: 'toto catégorie',
+  localization: '',
+  content: ' ' }
+[2015-10-16 09:51:39.482] [ERROR] current - Article haven't been created
+[2015-10-16 09:51:39.484] [TRACE] current - createInformation
+[2015-10-16 09:51:39.484] [TRACE] current - Retrieving previous body
+[2015-10-16 10:55:33.938] [TRACE] current - getArticleForm
+[2015-10-16 10:55:33.938] [TRACE] current - createInformation
+[2015-10-16 10:55:33.938] [TRACE] current - Creating an empty content and title
+[2015-10-16 10:55:44.607] [TRACE] current - { title: '', category: '', localization: '', content: ' ' }
+[2015-10-16 10:55:44.617] [ERROR] current - Article haven't been created
+[2015-10-16 10:55:44.618] [TRACE] current - createInformation
+[2015-10-16 10:55:44.618] [TRACE] current - Retrieving previous body
+[2015-10-16 10:56:41.267] [TRACE] current - getArticleForm
+[2015-10-16 10:56:41.267] [TRACE] current - createInformation
+[2015-10-16 10:56:41.267] [TRACE] current - Creating an empty content and title
+[2015-10-16 15:19:46.417] [TRACE] current - getArticleForm
+[2015-10-16 15:19:46.417] [TRACE] current - createInformation
+[2015-10-16 15:19:46.417] [TRACE] current - Creating an empty content and title
+[2015-10-16 15:20:05.653] [TRACE] current - { title: 'antlas',
+  category: 'planète',
+  localization: 'Antlas',
+  content: 'la planète ' }
+[2015-10-16 15:20:10.890] [TRACE] current - getArticleForm
+[2015-10-16 15:20:10.891] [TRACE] current - createInformation
+[2015-10-16 15:20:10.891] [TRACE] current - Creating an empty content and title
+[2015-10-16 15:20:40.699] [TRACE] current - { title: 'tar inistel',
+  category: 'lieux',
+  localization: 'antlas',
+  content: 'la tour ' }
+[2015-10-16 20:32:27.613] [TRACE] current - { total_rows: 13,
+  offset: 0,
+  rows: 
+   [ { id: 'ae', key: 'ae', value: [Object] },
+     { id: 'al', key: 'al', value: [Object] },
+     { id: 'all', key: 'all', value: [Object] },
+     { id: 'antlas', key: 'antlas', value: [Object] },
+     { id: 'ao', key: 'ao', value: [Object] },
+     { id: 'ikxx', key: 'ikxx', value: [Object] },
+     { id: 'lolo', key: 'lolo', value: [Object] },
+     { id: 'tar-inistel', key: 'tar inistel', value: [Object] },
+     { id: 'toto', key: 'toto', value: [Object] },
+     { id: 'totoc', key: 'totoc', value: [Object] },
+     { id: 'totolo', key: 'totolo', value: [Object] },
+     { id: 'xxtot', key: 'xxtot', value: [Object] },
+     { id: 'zorro', key: 'zorro', value: [Object] } ] }
+[2015-10-17 15:24:33.612] [TRACE] current - { total_rows: 0, offset: 0, rows: [] }
+[2015-10-17 15:26:08.967] [TRACE] current - getArticleForm
+[2015-10-17 15:26:08.967] [TRACE] current - createInformation
+[2015-10-17 15:26:08.967] [TRACE] current - Creating an empty content and title
+[2015-10-17 15:26:40.501] [TRACE] current - { title: 'Antlas',
+  category: 'Planète',
+  localization: 'Antlas',
+  content: 'Planète monde ' }
+[2015-10-17 15:27:52.767] [TRACE] current - { total_rows: 1,
+  offset: 0,
+  rows: [ { id: 'antlas', key: 'Antlas', value: [Object] } ] }
+[2015-10-17 15:28:00.964] [TRACE] current - { total_rows: 1,
+  offset: 0,
+  rows: [ { id: 'antlas', key: 'Antlas', value: [Object] } ] }
+[2015-10-17 16:03:38.158] [TRACE] current - design documents done
+[2015-10-17 16:03:42.829] [TRACE] current - design documents done
+[2015-10-17 16:04:05.139] [TRACE] current - design documents done
+[2015-10-18 13:46:19.368] [TRACE] current - design documents done
+[2015-10-18 13:48:38.967] [TRACE] current - design documents done
+[2015-10-18 13:53:52.416] [TRACE] current - design documents done
+[2015-10-18 13:59:32.606] [TRACE] current - design documents done
+[2015-10-18 14:03:05.431] [TRACE] current - design documents done
+[2015-10-18 14:04:09.290] [TRACE] current - design documents done
+[2015-10-18 14:05:07.130] [TRACE] current - design documents done
+[2015-10-18 14:06:14.481] [TRACE] current - design documents done
+[2015-10-18 14:09:18.150] [TRACE] current - design documents done
+[2015-10-18 14:16:25.675] [TRACE] current - design documents done
+[2015-10-18 14:21:37.431] [TRACE] current - design documents done
+[2015-10-18 14:22:49.195] [TRACE] current - design documents done
+[2015-10-18 14:24:00.159] [TRACE] current - design documents done
+[2015-10-18 14:29:47.913] [TRACE] current - design documents done
+[2015-10-18 14:35:44.532] [TRACE] current - design documents done
+[2015-10-18 14:44:49.298] [TRACE] current - design documents done
+[2015-10-18 15:10:31.072] [TRACE] current - design documents done
+[2015-10-18 15:22:06.787] [TRACE] current - design documents done
+[2015-10-18 15:34:49.771] [TRACE] current - design documents done
+[2015-10-18 15:37:24.577] [TRACE] current - design documents done
+[2015-10-18 15:42:24.819] [TRACE] current - design documents done
+[2015-10-18 15:42:54.105] [TRACE] current - design documents done
+[2015-10-18 15:45:10.707] [TRACE] current - design documents done
+[2015-10-18 15:50:43.314] [TRACE] current - design documents done
+[2015-10-18 15:56:19.819] [TRACE] current - design documents done
+[2015-10-18 15:57:38.773] [TRACE] current - design documents done
+[2015-10-18 15:58:27.388] [TRACE] current - design documents done
+[2015-10-18 16:33:43.046] [TRACE] current - design documents done
+[2015-10-18 16:34:35.873] [TRACE] current - design documents done
+[2015-10-18 16:45:33.874] [TRACE] current - design documents done
+[2015-10-18 16:47:52.454] [TRACE] current - design documents done
+[2015-10-18 16:48:49.895] [TRACE] current - design documents done
+[2015-10-18 17:11:30.990] [TRACE] current - design documents done
+[2015-10-18 17:17:03.724] [TRACE] current - design documents done
+[2015-10-18 17:29:27.542] [TRACE] current - design documents done
+[2015-10-18 17:31:16.804] [TRACE] current - design documents done
+[2015-10-18 17:32:12.443] [TRACE] current - design documents done
+[2015-10-18 17:42:10.406] [TRACE] current - design documents done
+[2015-10-18 17:43:30.611] [TRACE] current - design documents done
+[2015-10-18 17:44:49.657] [TRACE] current - design documents done
+[2015-10-18 17:50:25.339] [TRACE] current - design documents done
+[2015-10-18 18:39:22.406] [TRACE] current - design documents done
+[2015-10-18 18:39:50.796] [TRACE] current - design documents done
+[2015-10-18 18:40:54.005] [TRACE] current - design documents done
+[2015-10-18 18:42:45.296] [TRACE] current - design documents done
+[2015-10-18 18:43:51.685] [TRACE] current - design documents done
+[2015-10-18 18:44:51.364] [TRACE] current - design documents done
+[2015-10-18 18:45:00.388] [TRACE] current - design documents done
+[2015-10-18 19:03:09.167] [TRACE] current - design documents done
+[2015-10-18 19:03:37.685] [TRACE] current - design documents done
+[2015-10-18 19:04:21.502] [TRACE] current - design documents done
+[2015-10-18 19:04:30.303] [TRACE] current - design documents done

@@ -73,6 +73,9 @@ app.post('/create', auth.guard, controler.create.post);
 app.get('/login', controler.login.get);
 app.post('/login', auth.login);
 
+app.get('/upload', controler.upload.get);
+app.post('/upload', controler.upload.post);
+
 app.get('/logout', function (request, response, next )
 {
   request.logout();

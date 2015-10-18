@@ -21,5 +21,7 @@ $('textarea').each(function () {
     textarea:   $textarea[0],
     basePath:   '',
     parser:     markdown.toHTML,
+    clientSideStorage: false,
   }).load();
 });
+

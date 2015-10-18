@@ -5,9 +5,9 @@ var sumReduce = function (keys, values, rereduce) {
 module.exports = {
   _id: '_design/encyclo',
   updates: {
-    create: function (doc,req) { 
+    create: function (doc,req) {
       var body = JSON.parse(req.body);
-      if (!doc) { 
+      if (!doc) {
         var doc = {
           _id: body.id,
           title: body.title,
@@ -36,7 +36,7 @@ module.exports = {
   views: {
     all: {
       map: function(doc) {
-        emit(doc.title, {content:doc.content, 
+        emit(doc.title, {content:doc.content,
                          abstract:doc.abstract,
                          localization: doc.localization,
                          category: doc.category, });

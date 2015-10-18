@@ -9,10 +9,10 @@
   <fieldset>
     <legend>Creation d'article</legend>
     <label for="title">Title</label>
-    <input id="title" type="text" name="title" value="<%- article[0].title %>" />
+    <input id="title" type="text" name="title" required="true" value="<%= article[0].title %>" />
     <br />
     <label for="category">Catégorie </label>
-    <input id="category" list="category-list" type="text" name="category"/>
+    <input id="category" list="category-list" type="text" name="category" value="<%= article[0].category %>"/>
       <datalist id="category-list">
       <% categories.forEach(function(category) {%>
         <option value="<%= category %>"></option>
@@ -20,7 +20,7 @@
     </datalist>
     <br />
     <label for="localization"> Localisation </label>
-    <input id="localization" list="localization-list" type="text" name="localization"/>
+    <input id="localization" list="localization-list" type="text" name="localization" value="<%= article[0].localization %>"/>
     <datalist id="localization-list">
       <% localizations.forEach(function(localization) {%>
         <option value="<%= localization %>"></option>
@@ -30,7 +30,7 @@
     <label for="content">Article content</label>
     <textarea id="content" name="content"><%- article[0].content %></textarea>
   </fieldset>
-  <button type="submit">Envoyer</button>
+  <button id="createbutton" type="submit">Envoyer</button>
 </form>
 
 <%- include('footer.html'); %>

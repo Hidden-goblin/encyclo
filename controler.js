@@ -6,6 +6,9 @@ var chalk = require('chalk'); // chalk is to color terminal output
 var async = require('async'); // synchronize callbacks
 var markdown = require('markdown').markdown;// markdown text formatting
 var _ = require('lodash');
+var fs = require('fs-extra');
+var util = require('util');
+var formidable = require('formidable');
 var log4js = require('log4js');
 log4js.configure({
   appenders: [
@@ -83,7 +86,7 @@ function createInformation( request, response ) {
     if ( request.body === undefined || request.body.title === undefined) {
       logger.trace('Creating an empty content and title');
       console.log( 'previous request', request.body );
-      body.article = [{content: ' ', title: ''}];
+      body.article = [{content: ' ', title: '', category: '', localization:''}];
     }
     else {
       logger.trace('Retrieving previous body');
@@ -197,6 +200,32 @@ var editeArticle = {
   },
 };
 
+var upload = {
+  get: function getUpload( request, response){
+    return response.render('upload.html');
+  },
+  post: function postUpload( request, response){
+    var form = new formidable.IncomingForm();
+    form.parse(request, function(err, fields, files) {
+    response.writeHead(200, {'content-type': 'text/plain'});
+    response.write('received upload:\n\n');
+    response.end(util.inspect({fields: fields, files: files}));
+  });
+     form.on('end', function(fields, files) {
+     // Temporary location of our uploaded file
+    var temp_path = this.openedFiles[0].path;
+     // The file name of the uploaded file
+    var file_name = this.openedFiles[0].name;
+     // Location where we want to copy the uploaded file
+    var new_location = 'uploads/';
+
+    fs.copy(temp_path, new_location + file_name, function(err) {
+      // if ( err ) return response.render('erreur.html',{error:'Article non trouvé dans la base ou erreur de requête à la base.'});
+      // console.log('copied??');
+    });
+  });
+  }
+};
 //////
 // COMMON JS EXPORTS
 //////
@@ -207,5 +236,6 @@ module.exports = {
   initDB: initDesignDocuments,
   login: login,
   create: create,
-  editeArticle: editeArticle
+  editeArticle: editeArticle,
+  upload: upload,
 };

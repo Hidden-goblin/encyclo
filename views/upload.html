@@ -1,0 +1,11 @@
+<%- include('head.html'); %>
+<form method="post" enctype="multipart/form-data" action="/upload">
+  <fieldset>
+    <legend>Fichier pdf ou png</legend>
+    <label for="filename">le fichier</label>
+    <input id="filename" type="file" accept="image/png, application/pdf" name="filename">
+  </fieldset>
+  <button type="submit">Envoyer</button>
+</form>
+
+<%- include('footer.html'); %>
