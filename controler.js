@@ -231,6 +231,15 @@ var upload = {
   });
   }
 };
+
+function fileList(request, response){
+  fs.readdir('uploads/', function(err, files){
+    if( err ) return response.render('erreur.html',{error:'File list can\'t be displayed'});
+    console.log(files);
+    var body = {filesArray: files};
+    return response.render("files-list.html", body);
+  });
+}
 //////
 // COMMON JS EXPORTS
 //////
@@ -243,4 +252,5 @@ module.exports = {
   create: create,
   editeArticle: editeArticle,
   upload: upload,
+  fileList: fileList,
 };

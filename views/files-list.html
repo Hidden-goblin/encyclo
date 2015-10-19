@@ -1,0 +1,9 @@
+<%- include('head.html'); %>
+
+<dl>
+<% filesArray.forEach( function ( name ){ %>
+  <dt><a href="uploads/<%= name %>"> <%= name %></a></dt>
+<%  }); %>
+</dl>
+
+<%- include('footer.html'); %>

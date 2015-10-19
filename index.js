@@ -73,6 +73,8 @@ app.post('/create', auth.guard, controler.create.post);
 app.get('/login', controler.login.get);
 app.post('/login', auth.login);
 
+app.get('/fileslist', controler.fileList);
+
 app.get('/upload', auth.guard, controler.upload.get);
 app.post('/upload', auth.guard, controler.upload.post);
 
